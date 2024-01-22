@@ -4,7 +4,7 @@ services:
         image: geolocatorback
         container_name: geolocatorback
         build:
-            context: ./geolocatorback
+            context: ./backend
         ports:
             - "8080:80"
     frontend:
