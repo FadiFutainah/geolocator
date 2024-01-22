@@ -1,0 +1,72 @@
+server:
+  port: 8080
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: sa
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: false
+    show-sql: true
+  mail:
+    host: ${MAIL_HOST}
+    username: ${MAIL_USER}
+    password: ${MAIL_PASSWORD}
+    port: ${MAIL_PORT}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: method
+    path: /swagger-ui.html
+---
+server:
+  port: 9000
+spring:
+  config:
+    activate:
+      on-profile:
+        - test
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    password:
+    url: jdbc:mariadb://${MYSQL_HOST:localhost}:3306/geodb?createDatabaseIfNotExist=true
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: false
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    username: ''
+    password: ''
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: method
+    path: /swagger-ui.html
