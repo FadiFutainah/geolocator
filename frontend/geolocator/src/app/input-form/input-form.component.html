@@ -1,0 +1,25 @@
+<div style="display: flex;flex-direction: column;gap: 20px; justify-content: center; align-items: center; min-height: 100vh; font-family: sans-serif;">
+  <div style="width: 50%; height: 60vh; border-radius: 20px;border: 1px solid #eeebeb; background: #F9F9F9; padding: 40px 20px;color: #123656; display: flex;flex-direction: column; justify-content: center; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+      <label for="input1" style="font-size: 30px; font-weight: 600;">Address:</label>
+      <input id="input1" [(ngModel)]="input1Value" placeholder="Enter text" style="font-size: 18px; background-color: white; width: 300px; height: 40px; padding: 0px 10px; border: 1px solid #123656; border-radius: 8px;"/>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 50px;">
+      <label for="input2" style="font-size: 30px; font-weight: 600;">Email:</label>
+      <input id="input2" [(ngModel)]="input2Value" placeholder="Enter text" style="font-size: 18px; background-color: white; width: 300px; height: 40px; padding: 0px 10px; border: 1px solid #123656; border-radius: 8px;"/>
+    </div>
+
+    <button type="submit" (click)="sendData()" style="cursor: pointer ;color: white; background-color: #123656; font-size: 25px; border-radius: 8px; width: 200px; height: 55px;">Get geocode</button>
+  </div>
+
+  <div *ngIf="isLoading" style="font-size: 30px; font-weight: 700; color: #123656;">
+    Loading...
+   </div>
+   <div *ngIf="!isLoading && !error && showResponse" style="width: 60%; font-size: 18px; font-weight: 500; color: #123656;">
+    Request succeeded: {{ response | json }}
+   </div>
+   <div *ngIf="!isLoading && error" style="width: 60%; font-size: 18px; font-weight: 500; color: #123656;">
+    Request failed: {{ errorMessage }}
+   </div>
+</div>
