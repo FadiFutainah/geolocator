@@ -16,11 +16,12 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     open-in-view: false
     show-sql: true
+# this configuration should be added as an environment variable but for the sake of the test it will left like this
   mail:
-    host: ${MAIL_HOST}
-    username: ${MAIL_USER}
-    password: ${MAIL_PASSWORD}
-    port: ${MAIL_PORT}
+    host: smtp.gmail.com
+    username: 'fadiftenaft@gmail.com'
+    password: 'rxzl lrpu fkvw bjiu'
+    port: 587
     properties:
       mail:
         smtp:
